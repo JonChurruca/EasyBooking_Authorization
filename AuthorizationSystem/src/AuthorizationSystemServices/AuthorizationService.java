@@ -24,14 +24,19 @@ public class AuthorizationService extends UnicastRemoteObject implements IAuthor
 	
 	public boolean sendValidation(String email, String password) {
 		
-		if(users.containsKey(email)) {
-			if(users.containsValue(password)) {
-				return true;
-			}
-		}
-			
-		return false; 
+		boolean result; 
+		
+        if (users.containsKey(email) && users.containsValue(password)) {
+        	result = true; 
+        	
+        } else {
+        	result = false;
+           
+        }
+        	
+        return result; 
 	}
+	
 	
 	public static void main(String[] args) {
 		if (args.length != 3) {
